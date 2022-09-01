@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <title>cat survey</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<style>
+    .additional-info {
+        width: 40%;
+        height: 10vh;
+    }
+
+    .required {
+        display: flex;
+        width: 21%;
+        justify-content: space-between;
+        margin-bottom: 0.5%;
+    }
+
+    input:required:valid {
+        border-color: green;
+    }
+
+    .required:first-child {
+        margin-top: 0.75%;
+    }
+
+    .breed,
+    .gender,
+    .photo {
+        margin-top: 0.75%;
+        margin-bottom: 0.75%;
+    }
+
+    .food:checked+label {
+        background-color: lightcoral;
+    }
+</style>
+
+<body>
+    <h1>Заполните опросник на вашего кота:</h1>
+    <form id="catForm">
+        <fieldset>
+            <div class="required">
+                <label for="cat_name">Кличка питомца:</label>
+                <input type="text" placeholder="Том" id="cat_name" name="cat_name" required />
+            </div>
+            <div class="required">
+                <label for="name">Имя владельца:</label>
+                <input type="text" placeholder="Александра" id="name" name="name" required />
+            </div>
+            <div class="required">
+                <label for="phone">Телефон владельца:</label>
+                <input type="tel" minlength="10" maxlength="20"
+                    pattern="(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?" placeholder="+7 (900) 123 45 67"
+                    id="phone" name="phone" required />
+            </div>
+            <div class="required">
+                <label for="email">Email владельца:</label>
+                <input type="email" pattern="([\w\d._\-#])+@([\w\d._\-#]+[.][\w\d._\-#]+)" placeholder="email@mail.ru"
+                    id="email" name="email" required />
+            </div>
+        </fieldset>
+        <div class="breed">
+            <label for="breed">Выберите породу из списка:</label>
+            <br>
+            <select id="breed" name="breed">
+                <option value="Абиссинская">Абиссинская</option>
+                <option value="Британская">Британская</option>
+                <option value="Девон-рекс">Девон-рекс</option>
+                <option value="Донской сфинкс">Донской сфинкс</option>
+                <option value="Корниш-рекс">Корниш-рекс</option>
+                <option value="Мейн-кун">Мейн-кун</option>
+                <option value="Невская">Невская</option>
+                <option value="Персидская">Персидская</option>
+                <option value="Рэгдолл">Рэгдолл</option>
+                <option value="Другая">Другая</option>
+            </select>
+        </div>
+        <fieldset>
+            <legend>Выберите тип питания:</legend>
+            <div>
+                <input class="food" type="checkbox" id="food1" name="food1" value="влажный корм" />
+                <label for="food1">влажный корм</label>
+                <input class="food" type="checkbox" id="food2" name="food2" value="сухой корм" />
+                <label for="food2">сухой корм</label>
+                <input class="food" type="checkbox" id="food3" name="food3" value="натуральный корм" />
+                <label for="food3">натуральный корм</label>
+            </div>
+        </fieldset>
+        <div class="gender">
+            <div>Выберите пол:</div>
+            <div>
+                <input type="radio" name="sex" id="male" value="male" required />
+                <label for="male">Самец</label>
+            </div>
+            <div>
+                <input type="radio" name="sex" id="female" value="female" required />
+                <label for="female">Самка</label>
+            </div>
+        </div>
+        <div>
+            <label for="comments">Доп. информация:</label>
+            <div>
+                <input class="additional-info" id="comments" name="comments"
+                    placeholder="Здесь вы можете внести дополнительную информацию про вашего питомца " />
+            </div>
+        </div>
+        <div class="photo">
+            Здесь можно приложить фотографию питомца <input type="file" name="pic" />
+        </div>
+        <div>
+            <button type="submit">Сохранить</button>
+        </div>
+    </form>
+    <script src="index.js"></script>
+</body>
+
+</html>
